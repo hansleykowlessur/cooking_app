@@ -6,16 +6,16 @@ export default function Recipe(props) {
   const { id,
     name, 
     cookTime, 
-    servings, 
+    serving, 
     instructions, 
     ingredients } = props;
-    const {handleRecipeDelete} = useContext(RecipeContext);
+    const {handleRecipeDelete, handleRecipeSelect} = useContext(RecipeContext);
   return (
     <div className="recipe">
       <div className="recipe__header">
         <h3 className="recipe__title">{name}</h3>
         <div>
-          <button className="btn btn--primary mr-1">Edit</button>
+          <button className="btn btn--primary mr-1" onClick={() => handleRecipeSelect(id)}>Edit</button>
           <button 
             className="btn btn--danger" 
             onClick={() => handleRecipeDelete(id)}
@@ -28,7 +28,7 @@ export default function Recipe(props) {
       </div>
       <div className="recipe__row">
         <span className="recipe__label">Servings:</span>
-        <span className="recipe__value">{servings}</span>
+        <span className="recipe__value">{serving}</span>
       </div>
       <div className="recipe__row">
         <span className="recipe__label">Instructions:</span>
